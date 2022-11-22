@@ -3310,6 +3310,7 @@ static bool compac_init(struct thr_info *thr)
 			info->frequency_requested = opt_gekko_gsc_freq;
 			info->frequency_start = opt_gekko_start_freq;
 			break;
+		case IDENT_RM:
 		case IDENT_BSD:
 		case IDENT_GSD:
 			info->frequency_requested = opt_gekko_gsd_freq;
@@ -3605,6 +3606,7 @@ static struct cgpu_info *compac_detect_one(struct libusb_device *dev, struct usb
 	{
 		exclude_me  = (info->ident == IDENT_BSC && !opt_gekko_gsc_detect);
 		exclude_me |= (info->ident == IDENT_GSC && !opt_gekko_gsc_detect);
+		exclude_me |= (info->ident == IDENT_RM && !opt_gekko_gsd_detect);
 		exclude_me |= (info->ident == IDENT_BSD && !opt_gekko_gsd_detect);
 		exclude_me |= (info->ident == IDENT_GSD && !opt_gekko_gsd_detect);
 		exclude_me |= (info->ident == IDENT_BSE && !opt_gekko_gse_detect);
@@ -3632,6 +3634,7 @@ static struct cgpu_info *compac_detect_one(struct libusb_device *dev, struct usb
 	{
 		case IDENT_BSC:
 		case IDENT_GSC:
+		case IDENT_RM:
 		case IDENT_BSD:
 		case IDENT_GSD:
 		case IDENT_BSE:
