@@ -7,7 +7,7 @@ rockminer u10是模仿gekkoscience 2pac，网上只有编译好的windows版cgmi
 
 	git clone https://github.com/tangpinggou/cgminer-rockminerU10.git
 
-	cd cgminer-gekko
+	cd cgminer-rockminerU10
 	sudo usermod -a -G dialout,plugdev $USER
 	sudo cp 01-cgminer.rules /etc/udev/rules.d/
 	CFLAGS="-O2 -march=native" ./autogen.sh
