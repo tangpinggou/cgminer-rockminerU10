@@ -3246,8 +3246,12 @@ static bool gbt_solo_decode(struct pool *pool, json_t *res_val)
 	coinbase_aux = json_object_get(res_val, "coinbaseaux");
 	flags = json_string_value(json_object_get(coinbase_aux, "flags"));
 	default_witness_commitment = json_string_value(json_object_get(res_val, "default_witness_commitment"));
+	if(!flags) {
+        flags = calloc(1, 1);
+        }
 
-	if (!previousblockhash || !target || !version || !curtime || !bits || !coinbase_aux || !flags) {
+
+	if (!previousblockhash || !target || !version || !curtime || !bits || !coinbase_aux) {
 		applog(LOG_ERR, "Pool %d JSON failed to decode GBT", pool->pool_no);
 		return false;
 	}
