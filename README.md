@@ -18,14 +18,7 @@ rockminer u10是模仿gekkoscience 2pac，网上只有编译好的windows版cgmi
 
 	./cgminer -o stratum+tcp://solo.ckpool.org:3333 --gekko-2pac-freq 75 -u 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa.0 -p x --suggest-diff 100
 	
-
-linux下的效率相较于windows更高，目前版本cgminer不支持core solo，但是可以用bfgminer作为跳板。方法如下：
-
-	1.运行bitcoin core并同步，打开rpc.
-	
-	2.运行bfgminer.例如：./bfgminer -o http://localhost:8332 -u rpcusername -p rpcpassword --stratum-port 3333 --generate-to 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa --coinbase-sig "solo miner".
-	
-	3.运行cgminer.例如：./cgminer -o stratum+tcp://localhost:3333 --gekko-2pac-freq 75 -u x -p x
+修改了cgminer.c文件，以增加对bitcoin core 22.0及更高版本solo挖矿，不会再报“JSON failed to decode GBT”错误
 	
 ----分割线，以下为原文-----------------------------------------------------------------------------------------
 ### #####################################################################
